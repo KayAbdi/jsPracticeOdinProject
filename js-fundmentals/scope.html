@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function scope example</title>
+</head>
+<body>
+
+  <script>
+    //   x is globally scoped
+    // outputting "x" value is possible 
+    const x = 1;
+
+    function a() {
+        // y is locally scoped 
+      const y = 2;
+      // now we try to add output(y) in the function to see if we can get access to it
+      output(y); 
+      //We can call output(x) in this local scope and it's ok because x is defined globally
+      output(x);
+      // output: Value:2 and Value: 1
+    }
+
+    function b() {
+        // z is locally scoped
+      const z = 3;
+      // and here we'll output(y) from here. This will throw Error:y isn't defined because y is only accessible in it's own scope which is local
+      output(y)
+    }
+
+    function output(value) {
+      const para = document.createElement('p');
+      document.body.appendChild(para);
+      para.textContent = `Value: ${value}`;
+    }
+  </script>
+</body>
+</html>
